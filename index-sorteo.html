@@ -1,0 +1,4043 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sorteo Entradas</title>
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body,
+      div,
+      span,
+      applet,
+      object,
+      iframe,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p,
+      blockquote,
+      pre,
+      a,
+      abbr,
+      acronym,
+      address,
+      big,
+      cite,
+      code,
+      del,
+      dfn,
+      em,
+      img,
+      ins,
+      kbd,
+      q,
+      s,
+      samp,
+      small,
+      strike,
+      strong,
+      sub,
+      sup,
+      tt,
+      var,
+      b,
+      u,
+      i,
+      center,
+      dl,
+      dt,
+      dd,
+      ol,
+      ul,
+      li,
+      fieldset,
+      form,
+      label,
+      legend,
+      table,
+      caption,
+      tbody,
+      tfoot,
+      thead,
+      tr,
+      th,
+      td,
+      article,
+      aside,
+      canvas,
+      details,
+      embed,
+      figure,
+      figcaption,
+      footer,
+      header,
+      hgroup,
+      menu,
+      nav,
+      output,
+      ruby,
+      section,
+      summary,
+      time,
+      mark,
+      audio,
+      video {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font: inherit;
+        font-size: 100%;
+        vertical-align: baseline;
+      }
+
+      html {
+        line-height: 1;
+      }
+
+      ol,
+      ul {
+        list-style: none;
+      }
+
+      table {
+        border-collapse: collapse;
+        border-spacing: 0;
+      }
+      p,
+      ul,
+      li {
+        line-height: 1.4;
+      }
+      .slick-dotted.slick-slider {
+        margin-bottom: 30px;
+      }
+
+      .slick-dots {
+        position: absolute;
+        bottom: -25px;
+        display: block;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        text-align: center;
+      }
+
+      .slick-dots li {
+        position: relative;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        margin: 0 5px;
+        padding: 0;
+        cursor: pointer;
+      }
+
+      .slick-dots li button {
+        font-size: 0;
+        line-height: 0;
+        display: block;
+        width: 20px;
+        height: 20px;
+        padding: 8px;
+        cursor: pointer;
+        color: transparent;
+        border: 0;
+        outline: none;
+        background: transparent;
+      }
+
+      .slick-dots li button:hover,
+      .slick-dots li button:focus {
+        outline: none;
+      }
+
+      .slick-dots li button:hover:before,
+      .slick-dots li button:focus:before {
+        opacity: 1;
+      }
+
+      .slick-dots li button:before {
+        font-family: "slick";
+        font-size: 6px;
+        line-height: 20px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        height: 20px;
+        text-align: center;
+        opacity: 0.25;
+        color: #000;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      .slick-dots li.slick-active button:before {
+        opacity: 0.75;
+        color: #000;
+      }
+      .btn {
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -ms-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+        -webkit-border-radius: 20px;
+        -moz-border-radius: 20px;
+        border-radius: 20px;
+        font-size: 16px;
+        font-size: 1rem;
+        font-family: "Roboto", sans-serif;
+        font-weight: 500;
+        color: #fff;
+        text-align: center;
+        width: auto;
+        height: 40px;
+        position: relative;
+        display: inline-block;
+        padding: 11px 20px;
+        background-color: transparent;
+        border: #da291c 1px solid;
+        cursor: pointer;
+      }
+
+      .btn.btnPrimario {
+        color: #fff;
+        background-color: #da291c;
+      }
+      /* Base  */
+      @font-face {
+        font-family: "AMX-Regular";
+        src: url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Regular.eot?")
+            format("eot"),
+          url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Regular.woff2")
+            format("woff2"),
+          url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Regular.woff")
+            format("woff"),
+          url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Regular.ttf")
+            format("truetype"),
+          url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Regular.svg#AMX-Regular")
+            format("svg");
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "AMX-Medium";
+        src: url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Medium.eot?")
+            format("eot"),
+          url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Medium.woff2")
+            format("woff2"),
+          url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Medium.woff")
+            format("woff"),
+          url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Medium.ttf")
+            format("truetype"),
+          url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Medium.svg#AMX-Medium")
+            format("svg");
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "AMX-Bold";
+        src: url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Bold.eot?")
+            format("eot"),
+          url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Bold.woff2")
+            format("woff2"),
+          url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Bold.woff")
+            format("woff"),
+          url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Bold.ttf")
+            format("truetype"),
+          url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Bold.svg#AMX-Bold")
+            format("svg");
+        font-display: swap;
+      }
+      img {
+        max-width: 100%;
+      }
+    </style>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://www.claro.com.pe/portal/pe/recursos_tema/js/slick/slick.js?V1"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700"
+      rel="stylesheet"
+    />
+    <style>
+      @font-face {
+        font-family: "AMX";
+        src: url("https://www.claro.com.pe/portal/pe/recursos_tema/assets/fonts/amx/AMX-Bold.woff2")
+            format("woff2"),
+          url("https://www.claro.com.pe/portal/pe/recursos_tema/assets/fonts/amx/AMX-Bold.woff")
+            format("woff"),
+          url("https://www.claro.com.pe/portal/pe/recursos_tema/assets/fonts/amx/AMX-Bold.ttf")
+            format("truetype");
+        font-weight: bold;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "AMX-Black";
+        src: url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Black.eot?")
+            format("eot"),
+          url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Black.woff2")
+            format("woff2"),
+          url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Black.woff")
+            format("woff"),
+          url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Black.ttf")
+            format("truetype"),
+          url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Black.svg#AMX-Black")
+            format("svg");
+      }
+      @font-face {
+        font-family: "AMX-Regular";
+        src: url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Regular.eot?")
+            format("eot"),
+          url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Regular.woff2")
+            format("woff2"),
+          url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Regular.woff")
+            format("woff"),
+          url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Regular.ttf")
+            format("truetype"),
+          url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Regular.svg#AMX-Regular")
+            format("svg");
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "AMX-Medium";
+        src: url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Medium.eot?")
+            format("eot"),
+          url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Medium.woff2")
+            format("woff2"),
+          url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Medium.woff")
+            format("woff"),
+          url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Medium.ttf")
+            format("truetype"),
+          url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Medium.svg#AMX-Medium")
+            format("svg");
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "AMX-Bold";
+        src: url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Bold.eot?")
+            format("eot"),
+          url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Bold.woff2")
+            format("woff2"),
+          url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Bold.woff")
+            format("woff"),
+          url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Bold.ttf")
+            format("truetype"),
+          url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Bold.svg#AMX-Bold")
+            format("svg");
+        font-display: swap;
+      }
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body,
+      div,
+      span,
+      applet,
+      object,
+      iframe,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p,
+      blockquote,
+      pre,
+      a,
+      abbr,
+      acronym,
+      address,
+      big,
+      cite,
+      code,
+      del,
+      dfn,
+      em,
+      img,
+      ins,
+      kbd,
+      q,
+      s,
+      samp,
+      small,
+      strike,
+      strong,
+      sub,
+      sup,
+      tt,
+      var,
+      b,
+      u,
+      i,
+      center,
+      dl,
+      dt,
+      dd,
+      ol,
+      ul,
+      li,
+      fieldset,
+      form,
+      label,
+      legend,
+      table,
+      caption,
+      tbody,
+      tfoot,
+      thead,
+      tr,
+      th,
+      td,
+      article,
+      aside,
+      canvas,
+      details,
+      embed,
+      figure,
+      figcaption,
+      footer,
+      header,
+      hgroup,
+      menu,
+      nav,
+      output,
+      ruby,
+      section,
+      summary,
+      time,
+      mark,
+      audio,
+      video {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font: inherit;
+        font-size: 100%;
+        vertical-align: baseline;
+      }
+
+      html {
+        line-height: 1;
+      }
+
+      ol,
+      ul {
+        list-style: none;
+      }
+
+      table {
+        border-collapse: collapse;
+        border-spacing: 0;
+      }
+      p,
+      ul,
+      li {
+        line-height: 1.4;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -ms-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+        outline: none;
+      }
+      .slick-dotted.slick-slider {
+        margin-bottom: 30px;
+      }
+
+      .slick-dots {
+        position: absolute;
+        bottom: -25px;
+        display: block;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        text-align: center;
+      }
+
+      .slick-dots li {
+        position: relative;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        margin: 0 8px;
+        padding: 0;
+        cursor: pointer;
+      }
+
+      .slick-dots li button {
+        font-size: 0;
+        line-height: 0;
+        display: block;
+        width: 20px;
+        height: 20px;
+        padding: 8px;
+        cursor: pointer;
+        color: transparent;
+        border: 0;
+        outline: none;
+        background: transparent;
+      }
+
+      .slick-dots li button:hover,
+      .slick-dots li button:focus {
+        outline: none;
+      }
+
+      .slick-dots li button:hover:before,
+      .slick-dots li button:focus:before {
+        opacity: 1;
+      }
+
+      .slick-dots li button:before {
+        font-family: "slick";
+        font-size: 6px;
+        line-height: 20px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        height: 20px;
+        text-align: center;
+        opacity: 0.25;
+        color: #000;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      .slick-dots li.slick-active button:before {
+        opacity: 0.75;
+        color: #000;
+      }
+      .btn {
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -ms-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+        -webkit-border-radius: 20px;
+        -moz-border-radius: 20px;
+        border-radius: 20px;
+        font-size: 16px;
+        font-size: 1rem;
+        font-family: "Roboto", sans-serif;
+        font-weight: 500;
+        color: #fff;
+        text-align: center;
+        width: auto;
+        height: 40px;
+        position: relative;
+        display: inline-block;
+        padding: 11px 20px;
+        background-color: transparent;
+        border: #da291c 1px solid;
+        cursor: pointer;
+      }
+
+      .btn.btnPrimario {
+        color: #fff;
+        background-color: #da291c;
+      }
+      /* Base  */
+      @font-face {
+        font-family: "AMX-Regular";
+        src: url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Regular.eot?")
+            format("eot"),
+          url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Regular.woff2")
+            format("woff2"),
+          url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Regular.woff")
+            format("woff"),
+          url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Regular.ttf")
+            format("truetype"),
+          url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Regular.svg#AMX-Regular")
+            format("svg");
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "AMX-Medium";
+        src: url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Medium.eot?")
+            format("eot"),
+          url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Medium.woff2")
+            format("woff2"),
+          url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Medium.woff")
+            format("woff"),
+          url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Medium.ttf")
+            format("truetype"),
+          url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Medium.svg#AMX-Medium")
+            format("svg");
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "AMX-Bold";
+        src: url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Bold.eot?")
+            format("eot"),
+          url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Bold.woff2")
+            format("woff2"),
+          url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Bold.woff")
+            format("woff"),
+          url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Bold.ttf")
+            format("truetype"),
+          url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Bold.svg#AMX-Bold")
+            format("svg");
+        font-display: swap;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+      .btn.btnGrisRojo {
+        color: #da291c;
+        background-color: #fff;
+        border-color: #fff;
+      }
+
+      .btn.btnGrisRojo:hover {
+        color: #fff;
+        background-color: #b52217;
+        border-color: #b52217;
+      }
+      h1.hCenter,
+      .h1.hCenter,
+      h2.hCenter,
+      .h2.hCenter,
+      h3.hCenter,
+      .h3.hCenter,
+      h4.hCenter,
+      .h4.hCenter,
+      h5.hCenter,
+      .h5.hCenter,
+      h6.hCenter,
+      .h6.hCenter {
+        text-align: center;
+      }
+      h2,
+      .h2 {
+        font-size: 24px;
+        font-size: 1.5rem;
+      }
+      @media only screen and (min-width: 640px) {
+        h2,
+        .h2 {
+          font-size: 36px;
+          font-size: 2.25rem;
+        }
+      }
+      h1,
+      .h1,
+      h2,
+      .h2,
+      h3,
+      .h3,
+      h4,
+      .h4 {
+        font-family: "AMX", "Roboto", sans-serif;
+      }
+      section {
+        padding: 32px 0;
+        background-color: #fff;
+      }
+      @media only screen and (min-width: 640px) {
+        section {
+          padding: 40px 0;
+        }
+      }
+      body {
+        font-family: "Roboto", sans-serif;
+        color: #3c3c3c;
+      }
+      .container {
+        box-sizing: border-box;
+        width: 100%;
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      @media only screen and (min-width: 1500px) {
+        .container {
+          max-width: 1440px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <style type="text/css">
+      @font-face {
+        font-family: "AMX-Regular";
+        src: url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Regular.eot?")
+            format("eot"),
+          url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Regular.woff2")
+            format("woff2"),
+          url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Regular.woff")
+            format("woff"),
+          url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Regular.ttf")
+            format("truetype"),
+          url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Regular.svg#AMX-Regular")
+            format("svg");
+      }
+
+      @font-face {
+        font-family: "AMX-Medium";
+        src: url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Medium.eot?")
+            format("eot"),
+          url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Medium.woff2")
+            format("woff2"),
+          url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Medium.woff")
+            format("woff"),
+          url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Medium.ttf")
+            format("truetype"),
+          url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Medium.svg#AMX-Medium")
+            format("svg");
+      }
+
+      @font-face {
+        font-family: "AMX-Black";
+        src: url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Black.eot?")
+            format("eot"),
+          url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Black.woff2")
+            format("woff2"),
+          url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Black.woff")
+            format("woff"),
+          url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Black.ttf")
+            format("truetype"),
+          url("https://www.claro.com.pe/assets/havas/general/fonts/AMX-Black.svg#AMX-Black")
+            format("svg");
+      }
+
+      [v-cloak] > * {
+        display: none;
+      }
+
+      #app:not([v-cloak]) ~ .load_ing {
+        display: none;
+      }
+
+      #app ~ #load_er.over_lay {
+        display: -ms-grid;
+        display: grid;
+      }
+
+      #app .v--modal-overlay {
+        background-color: rgba(0, 0, 0, 0.7);
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      @-webkit-keyframes fadeInUp {
+        from {
+          opacity: 0;
+          -webkit-transform: translate3d(0, 100%, 0);
+          transform: translate3d(0, 100%, 0);
+        }
+
+        to {
+          opacity: 1;
+          -webkit-transform: none;
+          transform: none;
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          -webkit-transform: translate3d(0, 100%, 0);
+          transform: translate3d(0, 100%, 0);
+        }
+
+        to {
+          opacity: 1;
+          -webkit-transform: none;
+          transform: none;
+        }
+      }
+
+      @-webkit-keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+
+        to {
+          opacity: 1;
+        }
+      }
+
+      .e1-antisubasta {
+        background-color: #da291c;
+        overflow: hidden;
+        height: -webkit-fit-content;
+        height: -moz-fit-content;
+        height: fit-content;
+      }
+
+      .e1-antisubasta__main {
+        width: 100%;
+        height: -webkit-fit-content;
+        height: -moz-fit-content;
+        height: fit-content;
+        position: relative;
+        background-color: #da291c;
+      }
+
+      .e1-antisubasta__main:after {
+        background-image: url("https://www.claro.com.pe/assets/havas/claro-sorteo/confeti.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 200px;
+        top: 0;
+        left: 0;
+        right: 0;
+      }
+
+      @media screen and (max-width: 1024px) {
+        .e1-antisubasta__main:after {
+          height: 100px;
+          background-image: url("https://www.claro.com.pe/assets/havas/claro-sorteo/confeti-T.png");
+          z-index: 1;
+        }
+      }
+
+      @media screen and (max-width: 640px) {
+        .e1-antisubasta__main:after {
+          display: none;
+        }
+      }
+
+      .e1-antisubasta__main .portlet1 {
+        height: 511px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        align-items: center;
+        overflow: hidden;
+        position: relative;
+        background-image: url("https://www.claro.com.pe/assets/havas/claro-sorteo/peruchile/bg_desktop.jpg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        animation: fadeIn 2s;
+        margin-bottom: 50px;
+      }
+
+      @media screen and (max-width: 1024px) {
+        .e1-antisubasta__main .portlet1 {
+          flex-direction: column-reverse;
+          background-image: url("https://www.claro.com.pe/assets/havas/claro-sorteo/peruchile/bg_tablet.jpg");
+          width: 100%;
+          padding: 0px 0px 0;
+          height: 340px;
+          text-align: center;
+          margin-bottom: 50px;
+        }
+      }
+
+      @media screen and (max-width: 640px) {
+        .e1-antisubasta__main .portlet1 {
+          background: url("https://www.claro.com.pe/assets/havas/claro-sorteo/peruchile/bg_mobile.jpg")
+              lightgray -355.702px 0px/258.838% 100% no-repeat,
+            url("https://www.claro.com.pe/assets/havas/claro-sorteo/peruchile/bg_mobile.jpg")
+              lightgray -22.752px -87.893px/184.723% 135.576% no-repeat;
+          width: 100%;
+          height: 300px;
+          margin-bottom: 30px;
+        }
+      }
+
+      .e1-antisubasta__main .portlet1__main {
+        height: inherit;
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        background: -webkit-gradient(
+          linear,
+          left bottom,
+          left top,
+          from(#da291c),
+          color-stop(20%, rgba(218, 41, 28, 0))
+        );
+        background: linear-gradient(0deg, #da291c 0%, rgba(218, 41, 28, 0) 20%);
+      }
+
+      .e1-antisubasta__main .portlet1__main .content {
+        width: 100%;
+        height: inherit;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -moz-flex-direction: row-reverse;
+        -ms-flex-direction: row-reverse;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: reverse;
+        flex-direction: row-reverse;
+        -moz-justify-content: space-between;
+        -ms-justify-content: space-between;
+        -webkit-box-pack: justify;
+        justify-content: space-between;
+        -ms-flex-pack: space-between;
+        -moz-align-items: center;
+        -ms-align-items: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        max-width: 1400px;
+        width: 100%;
+        -webkit-transition: all 2s;
+        transition: all 2s;
+        margin: 0 auto;
+      }
+
+      @media screen and (max-width: 1024px) {
+        .e1-antisubasta__main .portlet1__main .content {
+          -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+          -webkit-box-pack: justify;
+          -ms-flex-pack: justify;
+          justify-content: space-between;
+        }
+      }
+
+      @media screen and (max-width: 1499px) {
+        .e1-antisubasta__main .portlet1__main .content {
+          max-width: 1240px;
+          width: calc(100% - 40px);
+        }
+      }
+
+      @media screen and (max-width: 1024px) {
+        .e1-antisubasta__main .portlet1__main .content {
+          max-width: calc(100% - 40px);
+          width: 100%;
+        }
+      }
+
+      .e1-antisubasta__main .portlet1__main .content__left {
+        width: -webkit-fit-content;
+        width: -moz-fit-content;
+        width: fit-content;
+        -ms-flex-item-align: start;
+        align-self: flex-start;
+        height: inherit;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -moz-flex-direction: column;
+        -ms-flex-direction: column;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        flex-direction: column;
+        -moz-align-items: flex-start;
+        -ms-align-items: flex-start;
+        -webkit-box-align: start;
+        -ms-flex-align: start;
+        align-items: flex-start;
+        -moz-justify-content: space-between;
+        -ms-justify-content: space-between;
+        -webkit-box-pack: justify;
+        justify-content: space-between;
+        -ms-flex-pack: space-between;
+        position: relative;
+      }
+
+      @media screen and (max-width: 1024px) {
+        .e1-antisubasta__main .portlet1__main .content__left {
+          width: 30%;
+          z-index: 1;
+        }
+
+        .e1-antisubasta__main .portlet1__main .content__left:before {
+          background-image: url("https://www.claro.com.pe/assets/havas/claro-sorteo/confeti-T.png");
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: 100% 100%;
+          position: absolute;
+          content: "";
+          width: 100%;
+          height: 100px;
+          top: 0;
+          left: 0;
+          right: 0;
+          z-index: 1;
+        }
+      }
+
+      @media screen and (max-width: 640px) {
+        .e1-antisubasta__main .portlet1__main .content__left {
+          width: 100%;
+        }
+      }
+
+      .e1-antisubasta__main .portlet1__main .content__left hgroup {
+        margin: 42px auto auto 0;
+        position: relative;
+        z-index: 1;
+        -webkit-animation: fadeIn 1s;
+        animation: fadeIn 1s;
+      }
+
+      @media screen and (max-width: 1024px) {
+        .e1-antisubasta__main .portlet1__main .content__left hgroup {
+          margin: auto auto auto 50px;
+        }
+      }
+
+      @media screen and (max-width: 640px) {
+        .e1-antisubasta__main .portlet1__main .content__left hgroup {
+          margin-top: 40px;
+          margin-left: 16px;
+        }
+      }
+
+      .e1-antisubasta__main .portlet1__main .content__left hgroup p {
+        color: #ffccd3;
+        font: normal 700 40px "AMX";
+        line-height: 42px;
+        text-align: left;
+      }
+
+      @media screen and (max-width: 1024px) {
+        .e1-antisubasta__main .portlet1__main .content__left hgroup p {
+          font-size: 40px;
+          line-height: 42px;
+        }
+      }
+
+      @media screen and (max-width: 640px) {
+        .e1-antisubasta__main .portlet1__main .content__left hgroup p {
+          font-size: 24px;
+          line-height: 26px;
+        }
+      }
+
+      .e1-antisubasta__main .portlet1__main .content__left hgroup p span.p1nk {
+        color: #f970b9;
+      }
+
+      .e1-antisubasta__main .portlet1__main .content__left hgroup p span.bl4ck {
+        color: #262626;
+      }
+
+      .e1-antisubasta__main .portlet1__main .content__left .vtx {
+        max-width: 570px;
+        width: 100%;
+        margin: auto 0 58px 58px;
+        font: normal 400 11px "Roboto";
+        color: #fff;
+        line-height: normal;
+        text-align: center;
+        -webkit-animation: fadeIn 2s;
+        animation: fadeIn 2s;
+      }
+
+      @media screen and (max-width: 1024px) {
+        .e1-antisubasta__main .portlet1__main .content__left .vtx {
+          margin: 0 auto;
+        }
+      }
+
+      @media screen and (max-width: 1024px) {
+        .e1-antisubasta__main .portlet1__main .content__left .vtx {
+          font-size: 9px;
+          position: relative;
+          z-index: 1;
+        }
+      }
+
+      .e1-antisubasta__main .portlet1__main .content__left .vtx a {
+        color: #fff;
+      }
+
+      .e1-antisubasta__main .portlet1__main .content__left .vtx a:hover {
+        color: #0fbfdf;
+      }
+
+      @media screen and (max-width: 640px) {
+        .e1-antisubasta__main .portlet1__main .content__left .vtx {
+          max-width: 350px;
+          width: 90%;
+        }
+      }
+
+      .e1-antisubasta__main .portlet1__main .content__right {
+        width: 100%;
+        max-width: 540px;
+        -ms-flex-item-align: start;
+        align-self: flex-start;
+        margin-top: 121px;
+      }
+
+      @media screen and (max-width: 1024px) {
+        .e1-antisubasta__main .portlet1__main .content__right {
+          text-align: center;
+          margin-top: 50px;
+          width: 100%;
+          position: relative;
+          z-index: 1000;
+          max-width: 520px;
+        }
+      }
+      @media screen and (max-width: 768px) {
+        .e1-antisubasta__main .portlet1__main .content__right {
+          text-align: center;
+          margin-top: 50px;
+          width: 70%;
+          position: relative;
+          z-index: 1000;
+          max-width: 520px;
+        }
+      }
+
+      @media screen and (max-width: 640px) {
+        .e1-antisubasta__main .portlet1__main .content__right {
+          width: 100%;
+          margin: 20px auto 0 0;
+          position: absolute;
+          max-width: 260px;
+          left: 0;
+          top: 0;
+          padding-left: 20px;
+        }
+      }
+
+      .e1-antisubasta__main .portlet1__main .content__right picture {
+        width: 150px;
+        height: 51.666px;
+        display: block;
+        margin: 0 auto 0 0;
+      }
+
+      @media screen and (max-width: 1024px) {
+        .e1-antisubasta__main .portlet1__main .content__right picture {
+          width: 122px;
+          height: 43px;
+          margin: 0 auto 0 0;
+        }
+      }
+
+      .e1-antisubasta__main .portlet1__main .content__right picture img {
+        width: inherit;
+        height: inherit;
+        -webkit-animation: fadeIn 1s;
+        animation: fadeIn 1s;
+        object-fit: fill;
+      }
+
+      .e1-antisubasta__main .portlet1__main .content__right hgroup h1 {
+        font: normal 700 32px "AMX";
+        color: #fff;
+        line-height: 1;
+        -webkit-animation: fadeIn 1s;
+        animation: fadeIn 1s;
+        padding-top: 12px;
+      }
+
+      @media screen and (max-width: 1024px) {
+        .e1-antisubasta__main .portlet1__main .content__right hgroup h1 {
+          font-size: 30px;
+          text-align: left;
+        }
+      }
+      @media screen and (max-width: 768px) {
+        .e1-antisubasta__main .portlet1__main .content__right hgroup h1 {
+          font-size: 26px;
+          text-align: left;
+        }
+      }
+
+      @media screen and (max-width: 640px) {
+        .e1-antisubasta__main .portlet1__main .content__right hgroup h1 {
+          font-size: 20px;
+          margin-top: 0;
+        }
+      }
+
+      .e1-antisubasta__main .portlet1__main .content__right hgroup h1 .dm {
+        display: none;
+      }
+
+      @media screen and (max-width: 1024px) {
+        .e1-antisubasta__main .portlet1__main .content__right hgroup h1 .dx {
+          display: none;
+        }
+
+        .e1-antisubasta__main .portlet1__main .content__right hgroup h1 .dm {
+          display: none;
+        }
+      }
+      @media screen and (max-width: 640px) {
+        .e1-antisubasta__main .portlet1__main .content__right hgroup h1 .dm {
+          display: block;
+        }
+      }
+
+      .e1-antisubasta__main .portlet1__main .content__right hgroup h1 span {
+        font-size: 40px;
+        font-family: "AMX-Black";
+      }
+
+      @media screen and (max-width: 1024px) {
+        .e1-antisubasta__main .portlet1__main .content__right hgroup h1 span {
+          font-size: 26px;
+          text-align: left;
+        }
+
+        .e1-antisubasta__main .portlet3 .content3__main__top {
+          margin-bottom: 30px;
+        }
+
+        .e1-antisubasta__main .portlet3 .content3__main__top h2 {
+          margin: 0 auto;
+        }
+
+        .e1-antisubasta__main .portlet3 .content3__main {
+          flex-flow: wrap !important;
+          margin-bottom: 30px;
+        }
+
+        .e1-antisubasta__main .portlet3 .content3__main .content3__main__top {
+          width: 100%;
+        }
+      }
+
+      @media screen and (max-width: 640px) {
+        .e1-antisubasta__main .portlet1__main .content__right hgroup h1 span {
+          font-size: 20px;
+        }
+
+        .e1-antisubasta__main .portlet3 .content3__main__top {
+          margin-bottom: 0px;
+        }
+
+        .e1-antisubasta__main .portlet3 .content3__main {
+          flex-flow: wrap !important;
+          margin-bottom: 0;
+        }
+      }
+
+      .e1-antisubasta__main .portlet1__main .content__right hgroup p {
+        font: normal 400 20px "AMX-Regular";
+        color: #fff;
+        line-height: 23px;
+        -webkit-animation: fadeIn 1.5s;
+        animation: fadeIn 1.5s;
+        max-width: 440px;
+        margin-top: 20px;
+      }
+
+      @media screen and (max-width: 1024px) {
+        .e1-antisubasta__main .portlet1__main .content__right hgroup p {
+          font-size: 20px;
+          text-align: left;
+        }
+        .e1-antisubasta__main .portlet1__main .content__right hgroup + p {
+          padding-top: 10px !important;
+        }
+      }
+
+      @media screen and (max-width: 768px) {
+        .e1-antisubasta__main .portlet1__main .content__right hgroup p {
+          font-size: 14px;
+          text-align: left;
+          margin-top: 10px;
+          padding-right: 40%;
+        }
+
+        .e1-antisubasta__main .portlet1__main .content__right hgroup + p {
+          padding-top: 10px !important;
+        }
+      }
+      @media screen and (max-width: 640px) {
+        .e1-antisubasta__main .portlet1__main .content__right hgroup p {
+          font-size: 14px;
+          text-align: left;
+          margin-top: 10px;
+          padding-right: 20%;
+          line-height: 1.1;
+        }
+      }
+
+      .e1-antisubasta__main .portlet3 {
+        max-width: 1400px;
+        width: 100%;
+        margin: 0 auto;
+      }
+
+      @media screen and (max-width: 1499px) {
+        .e1-antisubasta__main .portlet3 {
+          max-width: 1240px;
+          width: calc(100% - 40px);
+        }
+      }
+
+      @media screen and (max-width: 1024px) {
+        .e1-antisubasta__main .portlet3 {
+          max-width: calc(100% - 40px);
+          width: 100%;
+        }
+      }
+
+      .e1-antisubasta__main .portlet3 .content3 {
+        width: 100%;
+      }
+
+      .e1-antisubasta__main .portlet3 .content3__main {
+        width: 100%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        gap: 40px;
+      }
+
+      @media screen and (max-width: 1024px) {
+        .e1-antisubasta__main .portlet3 .content3__main {
+          -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+          -webkit-box-pack: center;
+          -ms-flex-pack: center;
+          justify-content: center;
+          gap: 0;
+          flex-flow: column;
+        }
+      }
+
+      @media screen and (max-width: 640px) {
+        .e1-antisubasta__main .portlet3 .content3__main {
+          gap: 10px;
+        }
+      }
+
+      .e1-antisubasta__main .portlet3 .content3__main__top h2 {
+        font: normal 700 32px "AMX";
+        color: #ffccd3;
+        line-height: 36px;
+        max-width: 290px;
+        margin-right: auto;
+      }
+
+      @media screen and (max-width: 1024px) {
+        .e1-antisubasta__main .portlet3 .content3__main__top h2 {
+          max-width: 600px;
+          text-align: center;
+        }
+      }
+
+      @media screen and (max-width: 640px) {
+        .e1-antisubasta__main .portlet3 .content3__main__top h2 {
+          font-size: 22px;
+          line-height: 24px;
+          max-width: 100%;
+          margin: 0 auto;
+        }
+      }
+
+      .e1-antisubasta__main .portlet3 .content3__main__middle,
+      .e1-antisubasta__main .portlet3 .content3__main__bottom {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        gap: 21px;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+      }
+
+      @media screen and (max-width: 1024px) {
+        .e1-antisubasta__main .portlet3 .content3__main__middle,
+        .e1-antisubasta__main .portlet3 .content3__main__bottom {
+          width: 50%;
+        }
+      }
+
+      @media screen and (max-width: 640px) {
+        .e1-antisubasta__main .portlet3 .content3__main__middle,
+        .e1-antisubasta__main .portlet3 .content3__main__bottom {
+          width: 100%;
+        }
+      }
+
+      .e1-antisubasta__main .portlet3 .content3__main__middle span,
+      .e1-antisubasta__main .portlet3 .content3__main__bottom span {
+        display: inline-block;
+        font: normal 700 120px "AMX";
+        color: #f970b9;
+      }
+
+      @media screen and (max-width: 640px) {
+        .e1-antisubasta__main .portlet3 .content3__main__middle span,
+        .e1-antisubasta__main .portlet3 .content3__main__bottom span {
+          line-height: 120px;
+        }
+      }
+
+      .e1-antisubasta__main .portlet3 .content3__main__middle h3,
+      .e1-antisubasta__main .portlet3 .content3__main__bottom h3 {
+        font: normal 500 20px "Roboto";
+        line-height: 22px;
+        color: #ffccd3;
+        text-align: left;
+        max-width: 244px;
+      }
+
+      @media screen and (max-width: 1024px) {
+        .e1-antisubasta__main .portlet3 .content3__main__middle h3,
+        .e1-antisubasta__main .portlet3 .content3__main__bottom h3 {
+          max-width: 160px;
+        }
+      }
+
+      @media screen and (max-width: 640px) {
+        .e1-antisubasta__main .portlet3 .content3__main__middle h3,
+        .e1-antisubasta__main .portlet3 .content3__main__bottom h3 {
+          font-size: 16px;
+          line-height: 19px;
+        }
+      }
+
+      .e1-antisubasta__main .portlet3 .content3__main__bottom span {
+        color: #262626;
+      }
+
+      .e1-antisubasta__main .portlet4 {
+        max-width: 1400px;
+        width: 100%;
+        margin: 0 auto 0;
+        padding-bottom: 40px;
+        position: relative;
+      }
+      .e1-antisubasta__main .portlet4:after {
+        background-image: url("https://www.claro.com.pe/assets/havas/claro-sorteo/confeti__footer.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 400px;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 0;
+        overflow: hidden;
+      }
+
+      @media screen and (max-width: 1499px) {
+        .e1-antisubasta__main .portlet4 {
+          max-width: 1240px;
+          width: calc(100% - 40px);
+        }
+      }
+
+      @media screen and (max-width: 1024px) {
+        .e1-antisubasta__main .portlet4 {
+          max-width: calc(100% - 40px);
+          width: 100%;
+        }
+      }
+
+      @media screen and (max-width: 640px) {
+        .e1-antisubasta__main .portlet4 {
+          max-width: 100%;
+          margin-bottom: 0;
+        }
+      }
+
+      .e1-antisubasta__main .portlet4 .content4 {
+        width: 100%;
+        padding: 0px 0;
+      }
+
+      .e1-antisubasta__main .portlet4 .content4__main {
+        width: 100%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: start;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
+        gap: 300px;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        position: relative;
+        z-index: 2;
+      }
+
+      @media screen and (max-width: 1024px) {
+        .e1-antisubasta__main .portlet4 .content4__main {
+          gap: 40px;
+          -webkit-box-orient: vertical;
+          -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+          flex-direction: column;
+        }
+      }
+
+      .e1-antisubasta__main .portlet4 .content4__main__top h2 {
+        font: normal 700 32px "AMX";
+        color: #ffccd3;
+        line-height: 36px;
+        max-width: 330px;
+        margin-right: auto;
+      }
+
+      @media screen and (max-width: 1024px) {
+        .e1-antisubasta__main .portlet4 .content4__main__top h2 {
+          max-width: 615px;
+          text-align: center;
+          margin: 0 auto;
+        }
+      }
+
+      @media screen and (max-width: 640px) {
+        .e1-antisubasta__main .portlet4 .content4__main__top h2 {
+          font-size: 22px;
+          line-height: 24px;
+          max-width: 85%;
+          margin: 0 auto;
+        }
+      }
+
+      .e1-antisubasta__main .portlet4 .content4__main__bottom {
+        position: relative;
+        width: 470px;
+      }
+
+      @media screen and (max-width: 1024px) {
+        .e1-antisubasta__main .portlet4 .content4__main__bottom {
+          width: 100%;
+        }
+      }
+
+      @media screen and (max-width: 640px) {
+        .e1-antisubasta__main .portlet4 .content4__main__bottom {
+          width: 100%;
+        }
+      }
+
+      .e1-antisubasta__main .portlet4 .content4__main__bottom .left,
+      .e1-antisubasta__main .portlet4 .content4__main__bottom .right {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        top: 45%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image: url("https://www.claro.com.pe/assets/havas/claro-sorteo/step2/icon.png");
+        background-size: 100% 100%;
+        cursor: pointer;
+        z-index: 100;
+        -webkit-transition: all 2s ease;
+        transition: all 2s ease;
+      }
+
+      @media screen and (max-width: 1024px) {
+        .e1-antisubasta__main .portlet4 .content4__main__bottom .left,
+        .e1-antisubasta__main .portlet4 .content4__main__bottom .right {
+          display: none;
+        }
+      }
+
+      .e1-antisubasta__main .portlet4 .content4__main__bottom .left {
+        left: -50px;
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg);
+      }
+
+      .e1-antisubasta__main .portlet4 .content4__main__bottom .right {
+        right: -50px;
+      }
+
+      .e1-antisubasta__main .portlet4 .content4__main__bottom .slider {
+        width: 450px;
+        position: relative;
+        overflow: hidden;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        justify-content: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        gap: 30px;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        overflow-x: hidden;
+        overflow-y: visible;
+        height: 600px;
+        -webkit-transition: opacity 2000s ease-in-out;
+        -moz-transition: opacity 2000s ease-in-out;
+        -ms-transition: opacity 2000s ease-in-out;
+        -o-transition: opacity 2000s ease-in-out;
+        opacity: 1;
+      }
+
+      @media screen and (max-width: 1024px) {
+        .e1-antisubasta__main .portlet4 .content4__main__bottom .slider {
+          width: 100%;
+          margin: 0 auto;
+          height: fit-content;
+        }
+      }
+
+      @media screen and (max-width: 640px) {
+        .e1-antisubasta__main .portlet4 .content4__main__bottom .slider {
+          height: 532px;
+        }
+      }
+
+      .e1-antisubasta__main
+        .portlet4
+        .content4__main__bottom
+        .slider
+        .slick-track {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+        align-items: stretch;
+        height: 100%;
+        padding: 0px;
+      }
+
+      @media screen and (max-width: 480px) {
+        .e1-antisubasta__main
+          .portlet4
+          .content4__main__bottom
+          .slider
+          .slick-track {
+          padding: 0;
+          height: -webkit-fit-content;
+          height: -moz-fit-content;
+          height: fit-content;
+        }
+      }
+
+      .e1-antisubasta__main
+        .portlet4
+        .content4__main__bottom
+        .slider
+        .slick-dots {
+        position: absolute;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        bottom: 0px;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        gap: 7px;
+        width: -webkit-fit-content;
+        width: -moz-fit-content;
+        width: fit-content;
+      }
+
+      @media screen and (max-width: 640px) {
+        .e1-antisubasta__main
+          .portlet4
+          .content4__main__bottom
+          .slider
+          .slick-dots {
+          width: 100vw;
+          bottom: 0px;
+          margin: 0;
+        }
+      }
+
+      .e1-antisubasta__main
+        .portlet4
+        .content4__main__bottom
+        .slider
+        .slick-dots
+        li {
+        width: -webkit-fit-content;
+        width: -moz-fit-content;
+        width: fit-content;
+        height: -webkit-fit-content;
+        height: -moz-fit-content;
+        height: fit-content;
+        padding: 0;
+        background: transparent;
+      }
+
+      .e1-antisubasta__main
+        .portlet4
+        .content4__main__bottom
+        .slider
+        .slick-dots
+        li
+        button {
+        width: inherit;
+        height: inherit;
+        padding: 0px;
+        width: 10px;
+        height: 10px;
+        overflow: hidden;
+        border: none;
+        border-radius: 20px;
+        opacity: 1;
+      }
+
+      .e1-antisubasta__main
+        .portlet4
+        .content4__main__bottom
+        .slider
+        .slick-dots
+        li
+        button:before {
+        /*position: absolute;
+          top: 1px;
+          left: 0;*/
+        display: block;
+        content: "";
+        height: 100%;
+        width: 100%;
+        border: 0;
+        border-radius: 20px;
+        opacity: 0.3;
+        background: #ffccd3;
+        opacity: 1;
+      }
+
+      .e1-antisubasta__main
+        .portlet4
+        .content4__main__bottom
+        .slider
+        .slick-dots
+        li.slick-active
+        button {
+        width: 10px;
+        opacity: 1;
+      }
+
+      .e1-antisubasta__main
+        .portlet4
+        .content4__main__bottom
+        .slider
+        .slick-dots
+        li.slick-active
+        button:before {
+        height: 100%;
+        width: 100%;
+        opacity: 1;
+        background: #f970b9;
+      }
+
+      .e1-antisubasta__main
+        .portlet4
+        .content4__main__bottom
+        .slider
+        .slick-list {
+        width: 100%;
+        padding: 0;
+      }
+
+      @media screen and (max-width: 640px) {
+        .e1-antisubasta__main
+          .portlet4
+          .content4__main__bottom
+          .slider
+          .slick-list {
+          padding-left: calc(5% - 7px);
+          height: -webkit-fit-content;
+          height: -moz-fit-content;
+          height: fit-content;
+        }
+      }
+
+      .e1-antisubasta__main
+        .portlet4
+        .content4__main__bottom
+        .slider
+        .slick-slide {
+        width: 224px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+      }
+
+      @media screen and (max-width: 1024px) {
+        .e1-antisubasta__main
+          .portlet4
+          .content4__main__bottom
+          .slider
+          .slick-slide {
+          width: 180px;
+        }
+      }
+
+      @media screen and (max-width: 640px) {
+        .e1-antisubasta__main
+          .portlet4
+          .content4__main__bottom
+          .slider
+          .slick-slide {
+          width: 290px;
+          height: 492px;
+          margin: 0 7px;
+        }
+      }
+
+      .e1-antisubasta__main
+        .portlet4
+        .content4__main__bottom
+        .slider
+        .slick-slide.slick-center {
+        width: 290px !important;
+        height: 492.636px !important;
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto 0;
+        top: 0;
+        bottom: 0;
+        left: 78px;
+        transition: left 5s ease-in;
+      }
+
+      @media screen and (max-width: 1024px) {
+        .e1-antisubasta__main
+          .portlet4
+          .content4__main__bottom
+          .slider
+          .slick-slide.slick-center {
+          width: 180px !important;
+          position: relative;
+          left: 0;
+        }
+      }
+
+      .e1-antisubasta__main
+        .portlet4
+        .content4__main__bottom
+        .slider
+        .slick-slide.slick-center.slider__item {
+        width: inherit;
+        height: inherit;
+        height: 100%;
+        pointer-events: none;
+        -webkit-transition: all 5s ease-in-out;
+        transition: all 5s ease-in-out;
+      }
+
+      .e1-antisubasta__main
+        .portlet4
+        .content4__main__bottom
+        .slider
+        .slick-slide.slick-center
+        > div
+        > .slider__item {
+        cursor: pointer;
+        -webkit-transition: all 2s ease;
+        transition: all 2s ease;
+        pointer-events: all;
+        opacity: 1;
+        z-index: 4;
+      }
+
+      @media screen and (min-width: 1024px) {
+        /* .e1-antisubasta__main .portlet4 .content4__main__bottom .slider .slick-slide>div>.slider__item .slider__item__preview {
+          background-color: black;
+        }
+        .e1-antisubasta__main .portlet4 .content4__main__bottom .slider .slick-slide.slick-center>div>.slider__item .slider__item__preview img{
+          opacity: 1;
+        }
+        .e1-antisubasta__main .portlet4 .content4__main__bottom .slider .slick-slide>div>.slider__item .slider__item__preview img{
+          transition: all ease-in-out 300ms;
+          opacity: 0.5;
+        } */
+      }
+
+      .e1-antisubasta__main
+        .portlet4
+        .content4__main__bottom
+        .slider
+        .slick-slide.slick-center
+        > div
+        > .slider__item:hover {
+        -webkit-transform: scale(1.05);
+        transform: scale(1.05);
+        -webkit-transition: all 2s ease;
+        transition: all 2s ease;
+      }
+
+      .e1-antisubasta__main
+        .portlet4
+        .content4__main__bottom
+        .slider
+        .slick-slide
+        > div {
+        width: inherit;
+        height: inherit;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+      }
+
+      .e1-antisubasta__main .portlet4 .content4__main__bottom .slider__item {
+        min-height: 367px;
+        border-radius: 20px;
+        overflow: hidden;
+        pointer-events: none;
+      }
+
+      @media screen and (max-width: 1024px) {
+        .e1-antisubasta__main .portlet4 .content4__main__bottom .slider__item {
+          width: 180px;
+          position: relative;
+          min-height: 313px;
+          pointer-events: all;
+          height: 313px;
+        }
+      }
+      @media screen and (max-width: 992px) {
+        .e1-antisubasta__main .portlet4 .content4__main__bottom .slider__item {
+          width: 150px;
+          position: relative;
+          min-height: 290px;
+          pointer-events: all;
+          height: 290px;
+        }
+      }
+
+      @media screen and (max-width: 640px) {
+        .e1-antisubasta__main .portlet4 .content4__main__bottom .slider__item {
+          min-height: 492px;
+          height: 100%;
+          border-radius: 30px;
+          width: 290px;
+        }
+      }
+
+      .e1-antisubasta__main
+        .portlet4
+        .content4__main__bottom
+        .slider__item__video {
+        display: none;
+        width: 100%;
+        height: 100%;
+        -o-object-fit: cover;
+        object-fit: cover;
+        -o-object-position: center;
+        object-position: center;
+      }
+
+      .e1-antisubasta__main
+        .portlet4
+        .content4__main__bottom
+        .slider__item__preview {
+        width: 100%;
+        height: 100%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        /*display: flex !important;*/
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        z-index: 2;
+      }
+
+      .e1-antisubasta__main
+        .portlet4
+        .content4__main__bottom
+        .slider__item__preview
+        img {
+        width: 100%;
+        height: 100%;
+        -o-object-fit: cover;
+        object-fit: cover;
+        -o-object-position: center;
+        object-position: center;
+      }
+
+      .e1-antisubasta__main .portlet2 {
+        -webkit-transition: all 2s;
+        transition: all 2s;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -moz-justify-content: space-between;
+        -ms-justify-content: space-between;
+        -webkit-box-pack: justify;
+        justify-content: space-between;
+        -ms-flex-pack: space-between;
+        -moz-flex-direction: row;
+        -ms-flex-direction: row;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        flex-direction: row;
+        -moz-align-items: center;
+        -ms-align-items: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        overflow: hidden;
+        position: relative;
+      }
+
+      /* .e1-antisubasta__main .portlet2:after {
+      background-image: url("https://www.claro.com.pe/assets/havas/claro-sorteo/confeti__footer.png");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      position: absolute;
+      content: "";
+      width: 100%;
+      height: 400px;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 0;
+      overflow: hidden;
+    } */
+
+      @media screen and (max-width: 1024px) {
+        .e1-antisubasta__main .portlet2:after {
+          display: none;
+        }
+      }
+
+      @media screen and (max-width: 1024px) {
+        .e1-antisubasta__main .portlet2 {
+          -moz-flex-direction: column-reverse;
+          -ms-flex-direction: column-reverse;
+          -webkit-box-orient: vertical;
+          -webkit-box-direction: reverse;
+          flex-direction: column-reverse;
+        }
+      }
+
+      .e1-antisubasta__main .portlet2__main {
+        height: inherit;
+        max-width: 1400px;
+        width: 100%;
+        margin: 0 auto;
+        padding-top: 30px;
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+      }
+
+      @media screen and (max-width: 1499px) {
+        .e1-antisubasta__main .portlet2__main {
+          max-width: 1240px;
+          width: calc(100% - 40px);
+        }
+      }
+
+      @media screen and (max-width: 1024px) {
+        .e1-antisubasta__main .portlet2__main {
+          max-width: calc(100% - 40px);
+          width: 100%;
+          height: -webkit-fit-content;
+          height: -moz-fit-content;
+          height: fit-content;
+        }
+      }
+
+      @media screen and (max-width: 640px) {
+        .e1-antisubasta__main .portlet2__main {
+          padding: 20px;
+        }
+      }
+
+      .e1-antisubasta__main .portlet2__main .content2 {
+        width: 100%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -moz-flex-direction: column;
+        -ms-flex-direction: column;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        flex-direction: column;
+        -moz-justify-content: space-between;
+        -ms-justify-content: space-between;
+        -webkit-box-pack: justify;
+        justify-content: space-between;
+        -ms-flex-pack: space-between;
+        -moz-align-items: center;
+        -ms-align-items: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        overflow: hidden;
+      }
+
+      @media screen and (max-width: 1024px) {
+        .e1-antisubasta__main .portlet2__main .content2 {
+          -moz-flex-direction: column;
+          -ms-flex-direction: column;
+          -webkit-box-orient: vertical;
+          -webkit-box-direction: normal;
+          flex-direction: column;
+        }
+      }
+
+      .e1-antisubasta__main .portlet2__main .content2__left {
+        width: -webkit-fit-content;
+        width: -moz-fit-content;
+        width: fit-content;
+        overflow: hidden;
+      }
+
+      .e1-antisubasta__main .portlet2__main .content2__left hgroup {
+        -webkit-animation: fadeIn 1s;
+        animation: fadeIn 1s;
+      }
+
+      @media screen and (max-width: 1024px) {
+        .e1-antisubasta__main .portlet2__main .content2__left hgroup {
+          max-width: 440px;
+        }
+      }
+
+      @media screen and (max-width: 640px) {
+        .e1-antisubasta__main .portlet2__main .content2__left hgroup {
+          margin-bottom: 30px;
+          max-width: 300px;
+        }
+      }
+
+      .e1-antisubasta__main .portlet2__main .content2__left hgroup h2 {
+        font: normal 700 32px "AMX-Regular";
+        color: #ffccd3;
+        line-height: normal;
+      }
+
+      @media screen and (max-width: 1024px) {
+        .e1-antisubasta__main .portlet2__main .content2__left hgroup h2 {
+          font-size: 32px;
+          line-height: 36px;
+          text-align: center;
+        }
+      }
+
+      @media screen and (max-width: 640px) {
+        .e1-antisubasta__main .portlet2__main .content2__left hgroup h2 {
+          font-size: 22px;
+          line-height: 26px;
+          margin-bottom: 10px;
+        }
+      }
+
+      .e1-antisubasta__main .portlet2__main .content2__left hgroup h2 span,
+      .e1-antisubasta__main .portlet2__main .content2__left hgroup h2 a {
+        color: #ffccd3;
+        font-family: "AMX-Medium", sans-serif;
+      }
+
+      .e1-antisubasta__main .portlet2__main .content2__right {
+        width: 1210px;
+        padding: 30px 0;
+        overflow: hidden;
+        scrollbar-width: none;
+        -webkit-transition: translate 5s linear 5s;
+        transition: translate 5s linear 5s;
+      }
+
+      @media screen and (max-width: 1024px) {
+        .e1-antisubasta__main .portlet2__main .content2__right {
+          width: 590px;
+        }
+      }
+
+      @media screen and (max-width: 640px) {
+        .e1-antisubasta__main .portlet2__main .content2__right {
+          max-width: 320px;
+          height: 436px;
+          overflow: hidden;
+          padding: 0;
+          box-shadow: 1px 26px 17px -17px rgba(0, 0, 0, 0.4);
+          -webkit-box-shadow: 1px 26px 17px -17px rgba(0, 0, 0, 0.4);
+          -moz-box-shadow: 1px 26px 17px -17px rgba(0, 0, 0, 0.4);
+          margin-bottom: 30px;
+        }
+      }
+
+      .e1-antisubasta__main
+        .portlet2__main
+        .content2__right::-webkit-scrollbar {
+        width: 0px;
+        height: 0px;
+      }
+
+      .e1-antisubasta__main
+        .portlet2__main
+        .content2__right::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      .e1-antisubasta__main
+        .portlet2__main
+        .content2__right::-webkit-scrollbar-thumb {
+        background: #8a8989;
+        border-radius: 0px;
+      }
+
+      .e1-antisubasta__main .portlet2__main .content2__right .c4rds {
+        display: -ms-grid;
+        display: grid;
+        margin: 0 0;
+        width: -webkit-fit-content;
+        width: -moz-fit-content;
+        width: fit-content;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        gap: 30px;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -webkit-animation: fadeIn 1s;
+        animation: fadeIn 1s;
+      }
+
+      @media screen and (max-width: 1024px) {
+        .e1-antisubasta__main .portlet2__main .content2__right .c4rds {
+          margin: 0 auto;
+          -webkit-box-pack: center;
+          -ms-flex-pack: center;
+          justify-content: center;
+        }
+      }
+
+      @media screen and (max-width: 640px) {
+        .e1-antisubasta__main .portlet2__main .content2__right .c4rds {
+          max-width: 320px;
+          height: -webkit-fit-content;
+          height: -moz-fit-content;
+          height: fit-content;
+          gap: 20px;
+          -webkit-box-orient: vertical;
+          -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+          flex-direction: column;
+        }
+      }
+
+      .e1-antisubasta__main .portlet2__main .content2__right .c4rds .c4rd {
+        cursor: pointer;
+        width: 280px;
+        height: 280px;
+        box-shadow: 1px 26px 17px -17px rgba(0, 0, 0, 0.4);
+        -webkit-box-shadow: 1px 26px 17px -17px rgba(0, 0, 0, 0.4);
+        -moz-box-shadow: 1px 26px 17px -17px rgba(0, 0, 0, 0.4);
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+      }
+
+      @media screen and (max-width: 640px) {
+        .e1-antisubasta__main .portlet2__main .content2__right .c4rds .c4rd {
+          width: 320px;
+          height: 208px;
+          overflow: hidden;
+        }
+      }
+
+      .e1-antisubasta__main
+        .portlet2__main
+        .content2__right
+        .c4rds
+        .c4rd:nth-child(3) {
+        -webkit-box-pack: end;
+        -ms-flex-pack: end;
+        justify-content: flex-end;
+      }
+
+      .e1-antisubasta__main
+        .portlet2__main
+        .content2__right
+        .c4rds
+        .c4rd__base {
+        overflow: hidden;
+        background-color: #f970b9;
+        width: inherit;
+        height: inherit;
+      }
+
+      .e1-antisubasta__main
+        .portlet2__main
+        .content2__right
+        .c4rds
+        .c4rd__base.short {
+        width: 280px;
+        height: 280px;
+      }
+
+      @media screen and (max-width: 640px) {
+        .e1-antisubasta__main
+          .portlet2__main
+          .content2__right
+          .c4rds
+          .c4rd__base.short {
+          width: 320px;
+          height: 208px;
+        }
+      }
+
+      .e1-antisubasta__main
+        .portlet2__main
+        .content2__right
+        .c4rds
+        .c4rd__base:hover
+        .b4se {
+        height: 0px;
+      }
+
+      .e1-antisubasta__main
+        .portlet2__main
+        .content2__right
+        .c4rds
+        .c4rd__base:hover
+        .ab0ve {
+        height: 100%;
+      }
+
+      .e1-antisubasta__main
+        .portlet2__main
+        .content2__right
+        .c4rds
+        .c4rd__base
+        .b4se {
+        height: inherit;
+        width: inherit;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .e1-antisubasta__main
+        .portlet2__main
+        .content2__right
+        .c4rds
+        .c4rd__base
+        .b4se
+        picture {
+        width: inherit;
+        height: inherit;
+        display: block;
+        position: relative;
+        z-index: 0;
+        overflow: hidden;
+      }
+
+      @media screen and (max-width: 640px) {
+        .e1-antisubasta__main
+          .portlet2__main
+          .content2__right
+          .c4rds
+          .c4rd__base
+          .b4se
+          picture {
+          width: 343px;
+          height: 343px;
+          top: -50px;
+        }
+      }
+
+      .e1-antisubasta__main
+        .portlet2__main
+        .content2__right
+        .c4rds
+        .c4rd__base
+        .b4se
+        picture
+        img {
+        width: inherit;
+        height: inherit;
+      }
+
+      .e1-antisubasta__main
+        .portlet2__main
+        .content2__right
+        .c4rds
+        .c4rd__base
+        .b4se
+        hgroup {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        bottom: 0;
+        background: linear-gradient(0deg, #000 -25%, rgba(0, 0, 0, 0) 80%);
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-pack: end;
+        -ms-flex-pack: end;
+        justify-content: flex-end;
+      }
+
+      @media screen and (max-width: 640px) {
+        .e1-antisubasta__main
+          .portlet2__main
+          .content2__right
+          .c4rds
+          .c4rd__base
+          .b4se
+          hgroup {
+          padding: 0;
+        }
+      }
+
+      .e1-antisubasta__main
+        .portlet2__main
+        .content2__right
+        .c4rds
+        .c4rd__base
+        .b4se
+        hgroup
+        img {
+        width: 32px;
+        height: 32px;
+        margin-left: 20px;
+      }
+
+      .e1-antisubasta__main
+        .portlet2__main
+        .content2__right
+        .c4rds
+        .c4rd__base
+        .b4se
+        hgroup
+        p {
+        font: normal 700 18px "AMX";
+        color: #fff;
+        line-height: normal;
+        margin-top: 12px;
+        max-width: 90%;
+        height: auto;
+        margin-left: 16px;
+        margin-right: 16px;
+        margin-bottom: 17px;
+      }
+      .e1-antisubasta__main
+        .portlet2__main
+        .content2__right
+        .c4rds
+        .c4rd__base
+        .b4se
+        hgroup
+        p
+        img {
+        width: 100%;
+        max-width: 102px;
+        margin-left: 0;
+        margin-top: 2px;
+      }
+      .e1-antisubasta__main
+        .portlet2__main
+        .content2__right
+        .c4rds
+        .c4rd__base
+        .b4se
+        hgroup
+        p.text-link {
+        font: normal 700 16px "AMX";
+        color: #fff;
+        line-height: normal;
+        margin-top: 0;
+        max-width: 90%;
+        height: auto;
+        margin-left: 16px;
+        margin-right: 16px;
+        margin-bottom: 17px;
+        text-decoration: underline;
+      }
+
+      @media screen and (max-width: 640px) {
+        .e1-antisubasta__main
+          .portlet2__main
+          .content2__right
+          .c4rds
+          .c4rd__base
+          .b4se
+          hgroup
+          p {
+          max-width: 90%;
+        }
+      }
+
+      .e1-antisubasta__main
+        .portlet2__main
+        .content2__right
+        .c4rds
+        .c4rd__base
+        .b4se
+        hgroup
+        p
+        span {
+        text-decoration: none;
+      }
+
+      .e1-antisubasta__main
+        .portlet2__main
+        .content2__right
+        .c4rds
+        .c4rd__base
+        .b4se
+        hgroup
+        .top {
+        display: none;
+        position: absolute;
+        top: 12px;
+        right: 8px;
+        cursor: pointer;
+      }
+
+      @media screen and (max-width: 640px) {
+        .e1-antisubasta__main
+          .portlet2__main
+          .content2__right
+          .c4rds
+          .c4rd__base
+          .b4se
+          hgroup
+          .top {
+          display: block;
+        }
+      }
+
+      .e1-antisubasta__main
+        .portlet2__main
+        .content2__right
+        .c4rds
+        .c4rd__base
+        .ab0ve {
+        width: inherit;
+        height: 0px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -moz-align-items: center;
+        -ms-align-items: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-transition-timing-function: ease;
+        transition-timing-function: ease;
+        -webkit-transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+        transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+        -webkit-transition: 0.4s;
+        transition: 0.4s;
+      }
+
+      @media screen and (max-width: 640px) {
+        .e1-antisubasta__main
+          .portlet2__main
+          .content2__right
+          .c4rds
+          .c4rd__base
+          .ab0ve {
+          -moz-align-items: flex-start;
+          -ms-align-items: flex-start;
+          -webkit-box-align: start;
+          -ms-flex-align: start;
+          align-items: flex-start;
+        }
+      }
+
+      .e1-antisubasta__main
+        .portlet2__main
+        .content2__right
+        .c4rds
+        .c4rd__base
+        .ab0ve.Desktop {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+      }
+
+      @media screen and (max-width: 640px) {
+        .e1-antisubasta__main
+          .portlet2__main
+          .content2__right
+          .c4rds
+          .c4rd__base
+          .ab0ve.Desktop {
+          display: none;
+        }
+      }
+
+      .e1-antisubasta__main
+        .portlet2__main
+        .content2__right
+        .c4rds
+        .c4rd__base
+        .ab0ve.Mobile {
+        display: none;
+      }
+
+      @media screen and (max-width: 640px) {
+        .e1-antisubasta__main
+          .portlet2__main
+          .content2__right
+          .c4rds
+          .c4rd__base
+          .ab0ve.Mobile {
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+        }
+      }
+
+      .e1-antisubasta__main
+        .portlet2__main
+        .content2__right
+        .c4rds
+        .c4rd__base
+        .ab0ve
+        hgroup {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -moz-flex-direction: column;
+        -ms-flex-direction: column;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        flex-direction: column;
+        -moz-justify-content: space-between;
+        -ms-justify-content: space-between;
+        -webkit-box-pack: justify;
+        justify-content: space-between;
+        -ms-flex-pack: space-between;
+        padding: 0px 30px;
+        height: inherit;
+      }
+
+      @media screen and (max-width: 640px) {
+        .e1-antisubasta__main
+          .portlet2__main
+          .content2__right
+          .c4rds
+          .c4rd__base
+          .ab0ve
+          hgroup {
+          -moz-align-items: flex-start;
+          -ms-align-items: flex-start;
+          -webkit-box-align: start;
+          -ms-flex-align: start;
+          align-items: flex-start;
+          padding: 0px 28px 0;
+        }
+      }
+
+      .e1-antisubasta__main
+        .portlet2__main
+        .content2__right
+        .c4rds
+        .c4rd__base
+        .ab0ve
+        hgroup
+        .m41n {
+        margin-top: 30px;
+      }
+
+      .e1-antisubasta__main
+        .portlet2__main
+        .content2__right
+        .c4rds
+        .c4rd__base
+        .ab0ve
+        hgroup
+        .m41n
+        h3 {
+        color: #000;
+        font: normal 700 20px "AMX";
+        line-height: normal;
+        margin: 0 0 20px 0;
+      }
+
+      @media screen and (max-width: 640px) {
+        .e1-antisubasta__main
+          .portlet2__main
+          .content2__right
+          .c4rds
+          .c4rd__base
+          .ab0ve
+          hgroup
+          .m41n
+          h3 {
+          margin-bottom: 6px;
+        }
+      }
+
+      .e1-antisubasta__main
+        .portlet2__main
+        .content2__right
+        .c4rds
+        .c4rd__base
+        .ab0ve
+        hgroup
+        .m41n
+        p {
+        font: normal 400 15px "Roboto";
+        color: #fff;
+        line-height: normal;
+      }
+
+      .e1-antisubasta__main
+        .portlet2__main
+        .content2__right
+        .c4rds
+        .c4rd__base
+        .ab0ve
+        hgroup
+        .red1rect {
+        border: none;
+        border-radius: 100px;
+        width: 212px;
+        background-color: #fff;
+        color: #da291c;
+        text-align: center;
+        font: normal 700 16px "AMX";
+        line-height: 45px;
+        cursor: pointer;
+        padding: 0;
+        margin-bottom: 30px;
+      }
+
+      @media screen and (max-width: 640px) {
+        .e1-antisubasta__main
+          .portlet2__main
+          .content2__right
+          .c4rds
+          .c4rd__base
+          .ab0ve
+          hgroup
+          .red1rect {
+          width: 100%;
+          margin-bottom: 20px;
+          line-height: 35px;
+          font-size: 14px;
+        }
+      }
+
+      .e1-antisubasta__main .portlet2__main .content2__button {
+        padding-bottom: 42px;
+      }
+
+      .e1-antisubasta__main
+        .portlet2__main
+        .content2__button
+        .paginator.Tablet {
+        display: none;
+      }
+
+      @media screen and (max-width: 1024px) {
+        .e1-antisubasta__main .portlet2__main .content2__button {
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          width: 100%;
+          -webkit-box-orient: vertical;
+          -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+          flex-direction: column;
+          padding-bottom: 24px;
+        }
+        .e1-antisubasta__main
+          .portlet2__main
+          .content2__button
+          .paginator.Desktop {
+          display: none !important;
+        }
+        .e1-antisubasta__main
+          .portlet2__main
+          .content2__button
+          .paginator.Tablet {
+          display: flex;
+        }
+      }
+
+      .e1-antisubasta__main .portlet2__main .content2__button .paginator {
+        -webkit-animation: fadeIn 1s;
+        animation: fadeIn 1s;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -moz-align-items: center;
+        -ms-align-items: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -moz-justify-content: center;
+        -ms-justify-content: center;
+        -webkit-box-pack: center;
+        justify-content: center;
+        -ms-flex-pack: center;
+        gap: 20px;
+      }
+
+      .e1-antisubasta__main
+        .portlet2__main
+        .content2__button
+        .paginator.Desktop {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+      }
+
+      @media screen and (max-width: 640px) {
+        .e1-antisubasta__main
+          .portlet2__main
+          .content2__button
+          .paginator.Desktop {
+          display: none;
+        }
+      }
+
+      .e1-antisubasta__main
+        .portlet2__main
+        .content2__button
+        .paginator.Mobile {
+        display: none;
+      }
+
+      @media screen and (max-width: 640px) {
+        .e1-antisubasta__main
+          .portlet2__main
+          .content2__button
+          .paginator.Mobile {
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+        }
+      }
+
+      .e1-antisubasta__main .portlet2__main .content2__button .paginator .back {
+        -webkit-transform: rotate(-180deg);
+        transform: rotate(-180deg);
+      }
+
+      @media screen and (max-width: 640px) {
+        .e1-antisubasta__main
+          .portlet2__main
+          .content2__button
+          .paginator
+          .back {
+          -webkit-transform: rotate(270deg);
+          transform: rotate(270deg);
+        }
+      }
+
+      @media screen and (max-width: 640px) {
+        .e1-antisubasta__main
+          .portlet2__main
+          .content2__button
+          .paginator
+          .next {
+          -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+        }
+      }
+
+      .e1-antisubasta__main .portlet2__main .content2__button .paginator p {
+        font: normal 800 16px "Roboto";
+        color: #fff;
+      }
+
+      .e1-antisubasta__main .portlet2__main .content2__button .paginator .back,
+      .e1-antisubasta__main .portlet2__main .content2__button .paginator .next {
+        background-color: transparent;
+        cursor: pointer;
+        border: none;
+        padding: 0;
+        margin: 0;
+        width: 28px;
+        height: 28px;
+      }
+
+      .e1-antisubasta__main
+        .portlet2__main
+        .content2__button
+        .paginator
+        .back.inactive,
+      .e1-antisubasta__main
+        .portlet2__main
+        .content2__button
+        .paginator
+        .next.inactive {
+        opacity: 0.5;
+      }
+
+      .e1-antisubasta__main
+        .portlet2__main
+        .content2__button
+        .paginator
+        .back
+        img,
+      .e1-antisubasta__main
+        .portlet2__main
+        .content2__button
+        .paginator
+        .next
+        img {
+        width: 100%;
+        height: 100%;
+      }
+
+      .e1-antisubasta__main .portlet4 .btnToMore {
+        border: none;
+        background-color: #fff;
+        color: #da291c;
+        font: normal 700 16px "AMX";
+        line-height: normal;
+        width: 230px;
+        padding: 12px 0;
+        display: block;
+        margin: 30px auto;
+        border-radius: 100px;
+        cursor: pointer;
+        text-align: center;
+        animation: fadeIn 1s;
+      }
+      .e1-antisubasta__main .portlet4 .textToMore {
+        border: none;
+        color: #ffccd3;
+        font-size: 22px;
+        font-family: "AMX-Medium", sans-serif;
+        line-height: normal;
+        max-width: 112px;
+        padding: 0 0;
+        display: block;
+        margin: 12px auto 40px;
+        border-radius: 100px;
+        cursor: pointer;
+        text-align: center;
+        animation: fadeIn 1s;
+        text-decoration: underline;
+      }
+
+      @media screen and (max-width: 640px) {
+        .e1-antisubasta__main .portlet2__main .content2__button .btnToMore {
+          max-width: 320px;
+          margin-top: 30px;
+          width: 100%;
+          margin-bottom: 0;
+        }
+        .e1-antisubasta__main .portlet4 .textToMore {
+          font-size: 18px;
+        }
+      }
+
+      @-webkit-keyframes pulse {
+        0% {
+          -webkit-transform: scale(1);
+          transform: scale(1);
+        }
+
+        70% {
+          -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+        }
+
+        100% {
+          -webkit-transform: scale(1);
+          transform: scale(1);
+        }
+      }
+
+      @keyframes pulse {
+        0% {
+          -webkit-transform: scale(1);
+          transform: scale(1);
+        }
+
+        70% {
+          -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+        }
+
+        100% {
+          -webkit-transform: scale(1);
+          transform: scale(1);
+        }
+      }
+
+      .e1-antisubasta__main .portlet2__main .content2__button .btnToMore:hover {
+        opacity: 0.8;
+        -webkit-animation: pulse 1s infinite;
+        animation: pulse 1s infinite;
+        -webkit-transition: 0.3s;
+        transition: 0.3s;
+      }
+
+      .e1-antisubasta__main .portlet2__main .content2__button .sectionBottom {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -moz-justify-content: center;
+        -ms-justify-content: center;
+        -webkit-box-pack: center;
+        justify-content: center;
+        -ms-flex-pack: center;
+        -moz-align-items: flex-end;
+        -ms-align-items: flex-end;
+        -webkit-box-align: end;
+        -ms-flex-align: end;
+        align-items: flex-end;
+        gap: 40px;
+        -webkit-animation: fadeIn 1s;
+        animation: fadeIn 1s;
+      }
+
+      @media screen and (max-width: 640px) {
+        .e1-antisubasta__main .portlet2__main .content2__button .sectionBottom {
+          gap: 24px;
+          -webkit-box-align: center;
+          -ms-flex-align: center;
+          align-items: center;
+        }
+      }
+
+      .e1-antisubasta__main
+        .portlet2__main
+        .content2__button
+        .sectionBottom__content {
+        cursor: pointer;
+        background-color: #262626;
+        padding: 0px 20px;
+        width: 90%;
+        min-height: 70px;
+        max-width: 753px;
+        position: relative;
+        z-index: 0;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+      }
+
+      @media screen and (max-width: 1024px) {
+        .e1-antisubasta__main
+          .portlet2__main
+          .content2__button
+          .sectionBottom__content {
+          max-width: 434px;
+        }
+      }
+
+      @media screen and (max-width: 640px) {
+        .e1-antisubasta__main
+          .portlet2__main
+          .content2__button
+          .sectionBottom__content {
+          width: 240px;
+          min-height: 100px;
+          padding: 0 15px;
+        }
+      }
+
+      .e1-antisubasta__main
+        .portlet2__main
+        .content2__button
+        .sectionBottom__content:after {
+        content: "";
+        position: absolute;
+        background-color: #262626;
+        width: 42.598px;
+        height: 42.598px;
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+        margin: 0 auto;
+        right: -15px;
+        top: 14px;
+        z-index: -1;
+      }
+
+      @media screen and (max-width: 640px) {
+        .e1-antisubasta__main
+          .portlet2__main
+          .content2__button
+          .sectionBottom__content:after {
+          width: 25.159px;
+          height: 25.159px;
+          top: 42px;
+          right: -10px;
+        }
+      }
+
+      .e1-antisubasta__main
+        .portlet2__main
+        .content2__button
+        .sectionBottom__content
+        p {
+        text-align: center;
+        width: -webkit-fit-content;
+        width: -moz-fit-content;
+        width: fit-content;
+        height: -webkit-fit-content;
+        height: -moz-fit-content;
+        height: fit-content;
+        color: #ffccd3;
+        font: normal 500 14px "AMX";
+        line-height: normal;
+      }
+
+      @media screen and (max-width: 640px) {
+        .e1-antisubasta__main
+          .portlet2__main
+          .content2__button
+          .sectionBottom__content
+          p {
+          font-size: 15px;
+          text-align: left;
+        }
+      }
+
+      .e1-antisubasta__main
+        .portlet2__main
+        .content2__button
+        .sectionBottom__content
+        p
+        span {
+        text-decoration: underline;
+      }
+
+      @media screen and (max-width: 640px) {
+        .e1-antisubasta__main
+          .portlet2__main
+          .content2__button
+          .sectionBottom
+          img {
+          width: 64px;
+          height: 64px;
+        }
+        .e1-antisubasta__main
+          .portlet2__main
+          .content2__button
+          .paginator.Tablet {
+          display: none;
+        }
+      }
+
+      .dtx {
+        display: none;
+      }
+
+      @media screen and (max-width: 1024px) {
+        .dtx {
+          display: inline;
+        }
+      }
+
+      .e1-antisubasta__main .portlet4 .text_fullclaro {
+        font-size: 32px;
+        color: #ffccd3;
+        text-align: center;
+        vertical-align: middle;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        font-family: "AMX-Medium", sans-serif;
+        padding-top: 20px;
+      }
+
+      .e1-antisubasta__main .portlet4 .text_fullclaro img {
+        background: white;
+        border-radius: 10px;
+        padding: 0 4px;
+      }
+
+      @media screen and (max-width: 1024px) {
+        .e1-antisubasta__main .portlet4 .text_fullclaro {
+          font-size: 22px;
+          display: block;
+          padding: 0 20px 40px;
+        }
+
+        .e1-antisubasta__main .portlet4 .text_fullclaro img {
+          display: inline-block;
+          max-width: 100px;
+          vertical-align: middle;
+          height: 33px;
+        }
+      }
+
+      @media screen and (max-width: 1024px) {
+        .e1-antisubasta__main .portlet1__main .content__right hgroup h1 .dx {
+          display: block;
+        }
+      }
+
+      @media screen and (max-width: 500px) {
+        .e1-antisubasta__main .portlet1 {
+          background-position: right;
+          background-position-x: -229px;
+        }
+      }
+      .slick-dots li {
+        margin: 0 5px;
+      }
+    </style>
+    <div class="layout" id="app" v-cloak>
+      <div class="layout__main">
+        <div class="e1-antisubasta" id="containPortletsScroll">
+          <div class="e1-antisubasta__main" id="stepsContainer">
+            <div class="portlet1" id="step1">
+              <div class="portlet1__main">
+                <div class="content">
+                  <div class="content__left"></div>
+                  <div class="content__right" id="step1">
+                    <picture>
+                      <img
+                        src="https://www.claro.com.pe/assets/havas/claro-sorteo/peruchile/pervscl.svg"
+                        alt="Bicolor | Claro Perú"
+                        loading="lazy"
+                        width="auto"
+                        height="auto"
+                    /></picture>
+                    <hgroup>
+                      <h1>
+                        <span>Claro club</span> sortea
+                        <span>400</span> entradas*<br class="dx" />
+                        para ver jugar a <br class="dm" /><span
+                          >La Bicolor</span
+                        >
+                      </h1>
+                      <p>
+                        Participa por una entrada doble para el partido Perú vs.
+                        Chile.
+                      </p>
+                    </hgroup>
+                    <p
+                      style="
+                        font-size: 12px;
+                        color: white;
+                        padding-top: 30px;
+                        text-align: left;
+                      "
+                    >
+                      *Serán 200 ganadores
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="portlet3" id="step3">
+              <div class="content3">
+                <div class="content3__main">
+                  <div class="content3__main__top">
+                    <h2>¿Cómo puedo participar?</h2>
+                  </div>
+                  <div class="content3__main__middle">
+                    <span>01</span>
+                    <h3>
+                      Ingresa a la
+                      <a
+                        style="text-decoration: underline"
+                        href="https://claroclubcoupons.page.link/beneficios"
+                        target="_blank"
+                        >App Claro club</a
+                      >
+                      y llena el formulario en el cupón del sorteo.
+                    </h3>
+                  </div>
+                  <div class="content3__main__bottom">
+                    <span>02</span>
+                    <h3>
+                      Acumula más posibilidades de ganar con las siguientes
+                      acciones.
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="portlet2" id="step2">
+              <div class="portlet2__main">
+                <div class="content2">
+                  <div class="content2__left">
+                    <hgroup>
+                      <!-- <h2>
+                      Si todavía no eres Claro,
+                      <span> <a style="text-decoration: underline" href="https://www.claro.com.pe/portabilidad/" target="_blank">porta tu línea móvil</a></span> o contrata un
+                      <span>
+                        <a href="https://www.claro.com.pe/personas/hogar/internet-fibra-optica/" target="_blank" title="" style="text-decoration: underline">servicio hogar aquí</a>
+                      </span>
+                    </h2> -->
+                    </hgroup>
+                  </div>
+                  <div class="content2__right">
+                    <div class="c4rds" id="c4rdsSlide">
+                      <div
+                        class="c4rd"
+                        v-for="(item, index) of slides"
+                        :key="index"
+                      >
+                        <div
+                          class="c4rd__base"
+                          :class="{'short': item.width}"
+                          :id="'short_'+item.index"
+                        >
+                          <div class="b4se">
+                            <picture>
+                              <img
+                                :src="item.img"
+                                alt="Brand Class | Claro Perú"
+                                loading="lazy"
+                                width="auto"
+                                height="auto"
+                            /></picture>
+                            <hgroup>
+                              <img
+                                class="top"
+                                src="https://www.claro.com.pe/assets/havas/claro-sorteo/step2/readonly.png"
+                                alt="Revert Icon | Claro Perú"
+                                loading="lazy"
+                                width="auto"
+                                height="auto"
+                              /><img
+                                src="https://www.claro.com.pe/assets/havas/claro-sorteo/perucolombia/claroclub-emojis_white.png"
+                                alt="Claro Club Emoji | Claro Perú"
+                                loading="lazy"
+                                width="auto"
+                                height="auto"
+                              />
+                              <p v-html="item.title"></p>
+                              <p class="text-link">{{item.textBtn}}</p>
+                            </hgroup>
+                          </div>
+                          <a
+                            class="ab0ve Desktop"
+                            v-if="item.showBtn"
+                            target="_blank"
+                            :href="item.cta"
+                          >
+                            <hgroup>
+                              <div class="m41n">
+                                <h3>{{item.title_hover}}</h3>
+                                <p>{{item.description}}</p>
+                              </div>
+                              <div class="red1rect" v-if="item.textBtn">
+                                {{item.textBtn}}
+                              </div>
+                              <div class="red1rect" v-else>Conoce más</div>
+                            </hgroup>
+                          </a>
+                          <div class="ab0ve Mobile" v-if="item.showBtn">
+                            <hgroup>
+                              <div class="m41n">
+                                <h3>{{item.title_hover}}</h3>
+                                <p>{{item.description}}</p>
+                              </div>
+                              <a
+                                class="red1rect"
+                                target="_blank"
+                                :href="item.cta"
+                                v-if="item.textBtn"
+                                >{{item.textBtn}}</a
+                              >
+                              <a
+                                class="red1rect"
+                                target="_blank"
+                                :href="item.cta"
+                                v-else
+                                >Conoce más</a
+                              >
+                            </hgroup>
+                          </div>
+                          <div class="ab0ve" v-if="!item.showBtn">
+                            <hgroup>
+                              <div class="m41n">
+                                <h3>{{item.title}}:</h3>
+                                <p>{{item.description}}</p>
+                              </div>
+                              <a
+                                class="red1rect"
+                                v-if="item.isMobile &amp;&amp; widthScreen"
+                                target="_blank"
+                                :href="item.cta"
+                                >Conoce más</a
+                              >
+                            </hgroup>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="content2__button">
+                    <div class="paginator Desktop">
+                      <button
+                        class="back"
+                        :class="{'inactive': paginator === 1}"
+                        @click="stepsBackForward('back', 1)"
+                      >
+                        <img
+                          src="https://www.claro.com.pe/assets/havas/claro-sorteo/step2/icon.png"
+                          alt="Button Left | Claro Perú"
+                          loading="lazy"
+                          width="auto"
+                          height="auto"
+                        />
+                      </button>
+                      <p>{{paginator}} / 4</p>
+                      <button
+                        class="next"
+                        :class="{'inactive': paginator === 4}"
+                        @click="stepsBackForward('forward', 1)"
+                        :disabled="paginator === 4"
+                      >
+                        <img
+                          src="https://www.claro.com.pe/assets/havas/claro-sorteo/step2/icon.png"
+                          alt="Button Right | Claro Perú"
+                          loading="lazy"
+                          width="auto"
+                          height="auto"
+                        />
+                      </button>
+                    </div>
+                    <div class="paginator Tablet">
+                      <button
+                        class="back"
+                        :class="{'inactive': paginator === 1}"
+                        @click="stepsBackForward('back', 1)"
+                      >
+                        <img
+                          src="https://www.claro.com.pe/assets/havas/claro-sorteo/step2/icon.png"
+                          alt="Button Left | Claro Perú"
+                          loading="lazy"
+                          width="auto"
+                          height="auto"
+                        />
+                      </button>
+                      <p>{{paginator}} / 5</p>
+                      <button
+                        class="next"
+                        :class="{'inactive': paginator === 5}"
+                        @click="stepsBackForward('forward2', 1)"
+                        :disabled="paginator === 5"
+                      >
+                        <img
+                          src="https://www.claro.com.pe/assets/havas/claro-sorteo/step2/icon.png"
+                          alt="Button Right | Claro Perú"
+                          loading="lazy"
+                          width="auto"
+                          height="auto"
+                        />
+                      </button>
+                    </div>
+                    <div class="paginator Mobile">
+                      <button
+                        class="back"
+                        :class="{'inactive': paginator === 1}"
+                        @click="stepsBackForward('back', 2)"
+                      >
+                        <img
+                          src="https://www.claro.com.pe/assets/havas/claro-sorteo/step2/icon.png"
+                          alt="Button Left | Claro Perú"
+                          loading="lazy"
+                          width="auto"
+                          height="auto"
+                        />
+                      </button>
+                      <p>{{paginator}} / 5</p>
+                      <button
+                        class="next"
+                        :class="{'inactive': paginator === 5}"
+                        @click="stepsBackForward('forward', 2)"
+                        :disabled="paginator === 5"
+                      >
+                        <img
+                          src="https://www.claro.com.pe/assets/havas/claro-sorteo/step2/icon.png"
+                          alt="Button Right | Claro Perú"
+                          loading="lazy"
+                          width="auto"
+                          height="auto"
+                        />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="portlet4" id="step4">
+              <div class="content4">
+                <!-- <div class="text_fullclaro">
+                ¡Si eres
+                <a href="https://www.claro.com.pe/personas/beneficios/full-claro/" target="_blank">
+                  <img
+                    class="lazyloaded"
+                    src="https://www.claro.com.pe/assets/havas/fullclaro/assets/landing/logo_fullclaro.svg"
+                    title="Full Claro"
+                    alt="Full Claro"
+                    width="160"
+                    height="50"
+                  />
+                </a>
+                tienes 2 oportunidades más para ganar!
+              </div> -->
+                <!-- <a href="https://www.claro.com.pe/personas/beneficios/full-claro/" target="_blank" title="" class="textToMore">Saber más</a> -->
+
+                <a
+                  href="https://cl4.ro/claroclubapp"
+                  target="_blank"
+                  title=""
+                  class="btnToMore"
+                  >Ir a Claro club</a
+                >
+
+                <div class="content4__main">
+                  <div class="content4__main__top">
+                    <h2>
+                      ¡Si la haces! ¡Tú también alienta a La Bicolor gracias al
+                      club!
+                    </h2>
+                  </div>
+                  <div class="content4__main__bottom">
+                    <div class="left"></div>
+                    <div class="right"></div>
+                    <div class="slider" id="slider_sorteo">
+                      <div
+                        class="slider__item"
+                        v-for="(slid, iSlide) in dataSlider"
+                        :key="iSlide"
+                        :ref="'result'+iSlide"
+                      >
+                        <div
+                          class="slider__item__preview"
+                          :id="'play'+iSlide"
+                          @click="playVideo('video'+iSlide, 'play'+iSlide)"
+                        >
+                          <img
+                            :src="slid.img"
+                            alt="Icon Play | Claro Peru"
+                            loading="lazy"
+                            width="auto"
+                            height="auto"
+                          />
+                        </div>
+                        <video
+                          class="slider__item__video"
+                          :id="'video'+iSlide"
+                          @click="playVideo('video'+iSlide)"
+                        >
+                          <source :src="slid.video" type="video/mp4" />
+                        </video>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      type="text/javascript"
+      src="https://www.claro.com.pe/portal/pe/recursos_tema/genericos/vue3.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://www.claro.com.pe/portal/pe/recursos_tema/genericos/vue3-demi.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://www.claro.com.pe/portal/pe/recursos_tema/genericos/vuelidate3-core.js"
+    ></script>
+    <script type="text/javascript">
+      $(document).ready(() => {
+        $("#slider_sorteo").slick({
+          infinite: false,
+          arrows: false,
+          dots: true,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          variableWidth: true,
+          speed: 500,
+          centerMode: true,
+          initialSlide: 1,
+          responsive: [
+            {
+              breakpoint: 1025,
+              settings: "unslick",
+            },
+            {
+              breakpoint: 480,
+              settings: {
+                slidesToShow: 1,
+                infinite: false,
+                centerMode: false,
+                initialSlide: 1,
+              },
+            },
+          ],
+        });
+
+        const handle__left = document.querySelector(
+          ".e1-antisubasta__main .portlet4 .content4__main__bottom .left"
+        );
+
+        const handle__right = document.querySelector(
+          ".e1-antisubasta__main .portlet4 .content4__main__bottom .right"
+        );
+
+        handle__left.addEventListener("click", (e) => {
+          $("#slider_sorteo").slick("slickPrev");
+          const videos = new Array(
+            document.querySelectorAll(".slider__item__video")
+          )[0];
+          const layerIcon = new Array(
+            document.querySelectorAll(".slider__item__preview")
+          )[0];
+
+          for (let i = 0; i < videos.length; i++) {
+            videos[i].pause();
+            videos[i].currentTime = 0;
+            // layerIcon[i].style.display = 'flex';
+          }
+          for (let i = 0; i < layerIcon.length; i++) {
+            layerIcon[i].style.display = "block";
+            videos[i].style.display = "none";
+          }
+        });
+
+        handle__right.addEventListener("click", (e) => {
+          $("#slider_sorteo").slick("slickNext");
+          const videos = new Array(
+            document.querySelectorAll(".slider__item__video")
+          )[0];
+          const layerIcon = new Array(
+            document.querySelectorAll(".slider__item__preview")
+          )[0];
+
+          for (let i = 0; i < videos.length; i++) {
+            videos[i].pause();
+            videos[i].currentTime = 0;
+            // layerIcon[i].style.display = 'flex';
+          }
+          for (let i = 0; i < layerIcon.length; i++) {
+            layerIcon[i].style.display = "block";
+            videos[i].style.display = "none";
+          }
+        });
+      });
+    </script>
+    <script type="module">
+      const { createApp, ref, computed, reactive, toRef } = Vue;
+
+      const dataSlider = [
+        {
+          id: 1,
+          img: "https://www.claro.com.pe/assets/havas/claro-sorteo/slider/junio/slider_1.png",
+          video:
+            "https://www.claro.com.pe/assets/havas/claro-sorteo/slider/junio/slider_1.mp4",
+        },
+        {
+          id: 2,
+          img: "https://www.claro.com.pe/assets/havas/claro-sorteo/slider/septiembre/slider_4.png?v=2",
+          video:
+            "https://www.claro.com.pe/assets/havas/claro-sorteo/slider/septiembre/slider_4.mp4",
+        },
+        {
+          id: 3,
+          img: "https://www.claro.com.pe/assets/havas/claro-sorteo/slider/junio/slider_2.png",
+          video:
+            "https://www.claro.com.pe/assets/havas/claro-sorteo/slider/junio/slider_2.mp4",
+        },
+        {
+          id: 4,
+          img: "https://www.claro.com.pe/assets/havas/claro-sorteo/slider/junio/slider_3.png",
+          video:
+            "https://www.claro.com.pe/assets/havas/claro-sorteo/slider/junio/slider_3.mp4",
+        },
+      ];
+      const slides = [
+        // {
+        //   index: 0,
+        //   isMobile: false,
+        //   width: false,
+        //   img: "https://www.claro.com.pe/assets/havas/claro-sorteo/perucolombia/cards/1.jpg?v=2",
+        //   title: "Ingresa a la app Claro club",
+        //   title_hover: "Ingresa a la app Claro club:",
+        //   description: "Regístrate en el sorteo y participa",
+        //   showBtn: true,
+        //   textBtn: "Ir al App",
+        //   cta: "https://claroclubcoupons.page.link/beneficios",
+        // },
+        {
+          index: 1,
+          isMobile: false,
+          width: true,
+          img: "https://www.claro.com.pe/assets/havas/claro-sorteo/perucolombia/cards/2.jpg",
+          title: "Cámbiate a Claro",
+          title_hover: "Cámbiate a Claro:",
+          description:
+            "Migra tu línea móvil ingresando a Tienda Claro y obtendrás una oportunidad adicional para participar.",
+          showBtn: true,
+          textBtn: "Cámbiate aquí",
+          cta: "https://www.tiendaclaro.pe/personas/catalogo-celulares/postpago/si?initialMap=c,c,c,specificationFilter_296&initialQuery=personas/catalogo-celulares/postpago/si&map=category-1,category-2,category-3,modalidad,plan-destacado&query=/personas/catalogo-celulares/postpago/portabilidad/si&searchState&utm_campaign=sorteo_entradas&utm_source=medios_propios&utm_medium=claro_pe&utm_content=internas-peru_colombia_cambiate_a_claro&utm_term=claro_club-portabilidad&cu=cp1724170442",
+        },
+        {
+          index: 2,
+          isMobile: false,
+          width: true,
+          img: "https://www.claro.com.pe/assets/havas/claro-sorteo/perucolombia/cards/3.jpg",
+          title: "Contrata un servicio  Claro hogar",
+          title_hover: "Contrata un servicio Claro hogar:",
+          description:
+            "Elige tu plan hogar en Tienda Claro y obtendrás una oportunidad adicional para participar.",
+          showBtn: true,
+          textBtn: "Contrata aquí",
+          cta: "https://www.tiendaclaro.pe/personas/hogar/internet?utm_campaign=sorteo_entradas&utm_source=medios_propios&utm_medium=claro_pe&utm_content=internas-peru_colombia_contrata_servicio_hogar&utm_term=claro_club-linea_nueva&cu=cp1724171605",
+        },
+        {
+          index: 3,
+          isMobile: false,
+          width: false,
+          img: "https://www.claro.com.pe/assets/havas/claro-sorteo/perucolombia/cards/4.jpg",
+          title: "Si eres Postpago Claro ¡Renueva tu equipo!",
+          title_hover: "Renueva tu equipo:",
+          description:
+            "Renueva con un celu de estreno a través de Tienda Claro y obtendrás una oportunidad adicional para participar.",
+          showBtn: true,
+          textBtn: "Renueva aquí",
+          cta: "https://www.tiendaclaro.pe/personas/catalogo-celulares/postpago/renovacion/si?initialMap=c,c,c&initialQuery=personas/catalogo-celulares/postpago/portabilidad/si&map=category-1,category-2,category-3,modalidad,plan-destacado&order=&page=1&query=/personas/catalogo-celulares/postpago/renovacion/si&searchState&utm_campaign=sorteo_entradas&utm_source=medios_propios&utm_medium=claro_pe&utm_content=internas-peru_colombia_renueva_tu_equipo&utm_term=claro_club-renovacion&cu=cp1724171688",
+        },
+        {
+          index: 4,
+          isMobile: false,
+          width: false,
+          img: "https://www.claro.com.pe/assets/havas/claro-sorteo/perucolombia/cards/5.jpg",
+          title:
+            "Si tienes recibos por servicios móviles o fijos ¡Págalos a tiempo!",
+          title_hover: "Paga tu recibo a tiempo:",
+          description:
+            "Paga tu recibo móvil u hogar a tiempo, a través de nuestros canales digitales o presenciales, y obtén una opción de participar.",
+          showBtn: true,
+          textBtn: "Paga tu recibo",
+          cta: "https://cl4.ro/miclarohome",
+        },
+        {
+          index: 5,
+          isMobile: true,
+          width: true,
+          img: "https://www.claro.com.pe/assets/havas/claro-sorteo/perucolombia/cards/6.jpg",
+          title: "Si eres Prepago Chévere ¡Haz una recarga!",
+          title_hover: "Si eres Prepago Chévere:",
+          description:
+            "Recarga desde S/7 a través de claro.pe o Mi Claro App. ¡Cada recarga suma una opción de participar!",
+          showBtn: true,
+          textBtn: "Recarga en Mi Claro",
+          cta: "https://claro.pe/recargas",
+        },
+        {
+          index: 6,
+          isMobile: false,
+          width: false,
+          img: "https://www.claro.com.pe/assets/havas/claro-sorteo/perucolombia/cards/7.jpg?v=2",
+          title:
+            "Si eres Prepago y cambias a un plan Postpago ¡Migra hoy tu plan!",
+          title_hover: "Migra de Prepago a Postpago:",
+          description:
+            "Ingresa a Tienda Claro, conviértete a Postpago y obtén una opción adicional para participar.",
+          showBtn: true,
+          textBtn: "Ver planes",
+          cta: "https://www.tiendaclaro.pe/landing-migracion?utm_campaign=sorteo_entradas&utm_source=medios_propios&utm_medium=claro_pe&utm_content=internas-peru_colombia_prepago_a_postpago&utm_term=claro_club-migracion&cu=cp1724172027",
+        },
+        {
+          index: 7,
+          isMobile: false,
+          width: true,
+          img: "https://www.claro.com.pe/assets/havas/claro-sorteo/perucolombia/cards/8.jpg",
+          title: "Afíliate al débito automático",
+          title_hover: "Afíliate al débito automático:",
+          description:
+            "Si tienes un servicio Claro, afíliate a nuestro débito automático para tener otra posibilidad para ganar.",
+          showBtn: true,
+          textBtn: "Afíliate aquí",
+          cta: "https://www.claro.com.pe/conoce-tu-recibo/debito-automatico/",
+        },
+        {
+          index: 8,
+          isMobile: false,
+          width: true,
+          img: "https://www.claro.com.pe/assets/havas/claro-sorteo/perucolombia/cards/9.jpg",
+          title:
+            "Conviértete en un cliente <img src='https://www.claro.com.pe/assets/havas/fullclaro/assets/landing/logo_fullclaro.svg'/>",
+          title_hover: "Conviértete en un cliente Full Claro:",
+          description:
+            "Si tienes Claro en tu casa y en tu celular, ¡conviértete a Full Claro y obtén DOS opciones de ganar!",
+          showBtn: true,
+          textBtn: "Conoce más",
+          cta: "https://www.tiendaclaro.pe/full-claro?utm_campaign=sorteo_entradas&utm_source=medios_propios&utm_medium=claro_pe&utm_content=internas-peru_colombia_full_claro&utm_term=claro_club-linea_nueva&cu=cp1724172151",
+        },
+        {
+          index: 9,
+          isMobile: false,
+          width: true,
+          img: "https://www.claro.com.pe/assets/havas/claro-sorteo/perucolombia/cards/10.jpg",
+          title: "¡Si ya eres Claro, contrata una línea adicional!",
+          title_hover: "Contrata una línea adicional:",
+          description:
+            "Si tienes un plan postpago MAX desde S/ 55.90, contrata una línea adicional y obtén otra posibilidad para ganar.",
+          showBtn: true,
+          textBtn: "Conoce más",
+          cta: "https://claro.pe/lineasadicionales",
+        },
+        {
+          index: 10,
+          isMobile: false,
+          width: true,
+          img: "https://www.claro.com.pe/assets/havas/claro-sorteo/perucolombia/cards/11.jpg",
+          title: "¡Canjea Claro puntos en Mi Claro app!",
+          title_hover: "¡Canjea Claro puntos en Mi Claro App!",
+          description:
+            "Ingresa a Mi Claro App y por cada 15 Claro puntos canjeados, obtén una oportunidad para participar. ¡Canjea ahora y aumenta tus chances de ganar!",
+          showBtn: true,
+          textBtn: "Canjéalos aquí",
+          cta: "http://compras.miclaro.com.pe",
+        },
+      ];
+
+      const app = createApp({
+        components: {},
+        setup() {
+          // VARIABLES
+          const paginator = ref(1);
+
+          const widthScreen = window.innerWidth <= 600;
+
+          // METHODS
+
+          const goInside = () => {
+            const element = document.getElementById("step1");
+            return element.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+              inline: "nearest",
+            });
+          };
+
+          const playVideo = (video, playLayer) => {
+            const videos = new Array(
+              document.querySelectorAll(".slider__item__video")
+            )[0];
+            const layerIcon = new Array(
+              document.querySelectorAll(".slider__item__preview")
+            )[0];
+
+            for (let i = 0; i < videos.length; i++) {
+              videos[i].pause();
+              videos[i].currentTime = 0;
+              // layerIcon[i].style.display = 'flex';
+            }
+            for (let i = 0; i < layerIcon.length; i++) {
+              layerIcon[i].style.display = "block";
+              videos[i].style.display = "none";
+            }
+
+            document.querySelector(`#${playLayer}`).style.display = "none";
+            document.querySelector(`#${video}`).style.display = "block";
+            document.querySelector(`#${video}`).play();
+            // this.$refs[`${playLayer}`][0].style.display = 'none'
+            // this.$refs[`${video}`][0].play()
+          };
+
+          const transitionElement = (contain, heigth, direction) => {
+            if (direction === "vertical") {
+              const element = document.getElementById(`${contain}`);
+              element.style.transform = `translateY(${heigth}px)`;
+              element.style.transition = "all 2s";
+            } else if (direction === "horizontal") {
+              const element = document.getElementById(`${contain}`);
+              element.style.transform = `translateX(${heigth}px)`;
+              element.style.transition = "all 2s";
+            }
+          };
+
+          const stepsBackForward = (direction, screen) => {
+            if (screen === 1) {
+              if (direction === "back") {
+                if (paginator.value === 1) return;
+                paginator.value -= 1;
+                if (paginator.value === 1)
+                  transitionElement("c4rdsSlide", 0, "horizontal");
+                if (paginator.value === 2)
+                  transitionElement("c4rdsSlide", -620, "horizontal");
+
+                if (window.screen.width > 1025) {
+                  if (paginator.value === 3)
+                    transitionElement("c4rdsSlide", -930, "horizontal");
+                } else {
+                  if (paginator.value === 3)
+                    transitionElement("c4rdsSlide", -1240, "horizontal");
+                }
+              }
+              if (direction === "forward") {
+                if (paginator.value === 4) return;
+                paginator.value += 1;
+                if (paginator.value === 2)
+                  transitionElement("c4rdsSlide", -620, "horizontal");
+                if (window.screen.width > 1025) {
+                  console.log("> 1025");
+                  if (paginator.value === 3)
+                    transitionElement("c4rdsSlide", -1240, "horizontal");
+                  if (paginator.value === 4)
+                    transitionElement("c4rdsSlide", -1860, "horizontal");
+                } else {
+                  console.log("<= 1025");
+                  if (paginator.value === 3)
+                    transitionElement("c4rdsSlide", -1240, "horizontal");
+                  if (paginator.value === 4)
+                    transitionElement("c4rdsSlide", -1860, "horizontal");
+                  if (paginator.value === 5)
+                    transitionElement("c4rdsSlide", -2480, "horizontal");
+                }
+              }
+              if (direction === "forward2") {
+                if (paginator.value === 5) return;
+                paginator.value += 1;
+                if (paginator.value === 2)
+                  transitionElement("c4rdsSlide", -620, "horizontal");
+                if (window.screen.width > 1025) {
+                  console.log("> 1025");
+                  if (paginator.value === 3)
+                    transitionElement("c4rdsSlide", -1240, "horizontal");
+                  if (paginator.value === 4)
+                    transitionElement("c4rdsSlide", -1860, "horizontal");
+                } else {
+                  console.log("<= 1025");
+                  if (paginator.value === 3)
+                    transitionElement("c4rdsSlide", -1240, "horizontal");
+                  if (paginator.value === 4)
+                    transitionElement("c4rdsSlide", -1860, "horizontal");
+                  if (paginator.value === 5)
+                    transitionElement("c4rdsSlide", -2480, "horizontal");
+                }
+              }
+            } else if (screen === 2) {
+              if (direction === "back") {
+                if (paginator.value === 1) return;
+                paginator.value -= 1;
+                if (paginator.value === 3)
+                  transitionElement("c4rdsSlide", -912, "vertical");
+                if (paginator.value === 2)
+                  transitionElement("c4rdsSlide", -456, "vertical");
+                if (paginator.value === 1)
+                  transitionElement("c4rdsSlide", 0, "vertical");
+              }
+              if (direction === "forward") {
+                if (paginator.value === 5) return;
+                paginator.value += 1;
+                if (paginator.value === 2)
+                  transitionElement("c4rdsSlide", -456, "vertical");
+                if (paginator.value === 3)
+                  transitionElement("c4rdsSlide", -912, "vertical");
+                if (paginator.value === 4)
+                  transitionElement("c4rdsSlide", -1368, "vertical");
+                if (paginator.value === 5)
+                  transitionElement("c4rdsSlide", -1823, "vertical");
+              }
+            }
+          };
+
+          return {
+            slides,
+            stepsBackForward,
+            paginator,
+            goInside,
+            playVideo,
+            dataSlider,
+            widthScreen,
+          };
+        },
+      });
+
+      app.mount("#app");
+    </script>
+  </body>
+</html>
